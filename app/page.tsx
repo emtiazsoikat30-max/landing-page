@@ -18,18 +18,18 @@ const products: Product[] = [
  {id:13,name:"LaserJet 85A Toner",brand:"HP",category:"Cartridge & Toner",price:1950,stock:"In stock",image:"https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=85"}
 ];
 const categories = [
- ["Computer","▰","Laptops & desktops","https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=640&q=88"],
- ["Computer Accessories","⌨","Keyboards, mice & more","https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=640&q=88"],
- ["IT Accessories","⌁","USB hubs & essentials","https://images.unsplash.com/photo-1625948515291-69613efd103f?auto=format&fit=crop&w=640&q=88"],
- ["PC Build Up","▣","Build your dream rig","https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=640&q=88"],
- ["CC Camera","◉","Smarter security","https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=640&q=88"],
- ["Printer","▤","Print without limits","https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=640&q=88"],
- ["Cartridge & Toner","▧","Printer supplies","https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=640&q=88"],
- ["Networking Cable","⌁","Ethernet & LAN cable","https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&q=88"],
- ["iPad & Tablets","▱","Work & play anywhere","https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=640&q=88"],
- ["Router","⌁","Fast home networking","https://images.unsplash.com/photo-1606904825846-64727b3aae35?auto=format&fit=crop&w=640&q=88"],
- ["Headphones","◌","Immersive sound","https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=640&q=88"],
- ["Laptop Bag","▰","Protect your laptop","https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=640&q=88"]
+ ["Computer","▰","Laptops & desktops","/images/categories/computer.jpg"],
+ ["Computer Accessories","⌨","Keyboards, mice & more","/images/categories/computer-accessories.jpg"],
+ ["IT Accessories","⌁","USB hubs & essentials","/images/categories/it-accessories.jpg"],
+ ["PC Build Up","▣","Build your dream rig","/images/categories/pc-build-up.jpg"],
+ ["CC Camera","◉","Smarter security","/images/categories/cc-camera.jpg"],
+ ["Printer","▤","Print without limits","/images/categories/printer.jpg"],
+ ["Cartridge & Toner","▧","Printer supplies","/images/categories/cartridge-toner.jpg"],
+ ["Networking Cable","⌁","Ethernet & LAN cable","/images/categories/networking-cable.jpg"],
+ ["iPad & Tablets","▱","Work & play anywhere","/images/categories/ipad-tablets.jpg"],
+ ["Router","⌁","Fast home networking","/images/categories/router.jpg"],
+ ["Headphones","◌","Immersive sound","/images/categories/headphones.jpg"],
+ ["Laptop Bag","▰","Protect your laptop","/images/categories/laptop-bag.jpg"]
 ];
 const taka=(n:number)=>`৳${n.toLocaleString("en-US")}`;
 
