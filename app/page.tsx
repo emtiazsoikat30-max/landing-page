@@ -45,7 +45,7 @@ export default function Home(){
  const cartProducts=cart.map(id=>products.find(p=>p.id===id)).filter(Boolean) as Product[];
  const cartTotal=cartProducts.reduce((sum,p)=>sum+p.price,0);
  const cartLines=products.filter(p=>cart.includes(p.id)).map(p=>({product:p,quantity:cart.filter(id=>id===p.id).length}));
- const changeQuantity=(id:number,delta:number)=>setCart(c=>{const next=[...c];if(delta>0)return [...next,id];const i=next.indexOf(id);if(i<0)return next;next.splice(i,1);return next});
+ const changeQuantity=(id:number,delta:number)=>setCart(c=>{const quantity=c.filter(item=>item===id).length;if(delta<0&&quantity<=1)return c;return delta>0?[...c,id]:c.slice(0,c.indexOf(id)).concat(c.slice(c.indexOf(id)+1))});
  const toggleWish=(id:number)=>setWish(w=>w.includes(id)?w.filter(x=>x!==id):[...w,id]);
  const submitOrder=async(e:React.FormEvent<HTMLFormElement>)=>{e.preventDefault();if(!checkout)return;const data=new FormData(e.currentTarget);const order={id:`ORD-${Date.now().toString().slice(-6)}`,product:checkout.name,brand:checkout.brand,price:checkout.price,name:String(data.get("name")),phone:String(data.get("phone")),address:String(data.get("address")),created_at:new Date().toISOString(),status:"Pending"};const existing=JSON.parse(localStorage.getItem("countryside-orders")||"[]");localStorage.setItem("countryside-orders",JSON.stringify([order,...existing]));try{await fetch(`${SUPABASE_URL}/rest/v1/orders`,{method:"POST",headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(order)})}catch{}window.location.href="/orders";};
  return <main>
