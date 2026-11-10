@@ -46,7 +46,7 @@ export default function Home(){
  const cartTotal=cartProducts.reduce((sum,p)=>sum+p.price,0);
  const cartLines=products.filter(p=>cart.includes(p.id)).map(p=>({product:p,quantity:cart.filter(id=>id===p.id).length}));
  const checkoutTotal=checkoutItems.length?checkoutItems.reduce((sum,item)=>sum+item.product.price*item.quantity,0):(checkout?.price||0);
- useEffect(()=>{if(checkout&&cart.includes(checkout.id))setCheckoutItems(cartLines)},[checkout,cart]);
+ useEffect(()=>{if(checkout&&cart.length>1)setCheckoutItems(cartLines);else if(checkout&&!cart.includes(checkout.id))setCheckoutItems([])},[checkout,cart]);
  useEffect(()=>{if(detail&&cart.includes(detail.id)){setCheckoutItems(cartLines);setCheckout(detail);setDetail(null)}},[detail]);
  const changeQuantity=(id:number,delta:number)=>setCart(c=>{const quantity=c.filter(item=>item===id).length;if(delta<0&&quantity<=1)return c;return delta>0?[...c,id]:c.slice(0,c.indexOf(id)).concat(c.slice(c.indexOf(id)+1))});
  const toggleWish=(id:number)=>setWish(w=>w.includes(id)?w.filter(x=>x!==id):[...w,id]);
