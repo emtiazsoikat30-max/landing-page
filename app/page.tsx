@@ -32,8 +32,8 @@ const categories = [
  ["Laptop Bag","▰","Protect your laptop","/images/categories/laptop-bag.jpg"]
 ];
 const taka=(n:number)=>`৳${n.toLocaleString("en-US")}`;
-const SUPABASE_URL="https://ybfhzkbqifrvifziabiv.supabase.co";
-const SUPABASE_KEY="sb_publishable_6bE7qfr-TQQsEWxz6M02rQ_A-DLpZv_";
+const SUPABASE_URL=process.env.NEXT_PUBLIC_SUPABASE_URL||"";
+const SUPABASE_KEY=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY||"";
 
 export default function Home(){
  const [query,setQuery]=useState(""); const [category,setCategory]=useState("All"); const [sort,setSort]=useState("featured"); const [cart,setCart]=useState<number[]>([]); const [wish,setWish]=useState<number[]>([]); const [menu,setMenu]=useState(false); const [notice,setNotice]=useState(""); const [email,setEmail]=useState(""); const [detail,setDetail]=useState<Product|null>(null); const [checkout,setCheckout]=useState<Product|null>(null);

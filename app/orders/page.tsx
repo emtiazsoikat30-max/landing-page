@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 type Order={id:string;product:string;price:number;name:string;phone:string;address:string;createdAt:string;status:string};
-const SUPABASE_URL="https://ybfhzkbqifrvifziabiv.supabase.co"; const SUPABASE_KEY="sb_publishable_6bE7qfr-TQQsEWxz6M02rQ_A-DLpZv_";
+const SUPABASE_URL=process.env.NEXT_PUBLIC_SUPABASE_URL||""; const SUPABASE_KEY=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY||"";
 export default function Orders(){
  const [orders,setOrders]=useState<Order[]>([]);
  useEffect(()=>{const local=JSON.parse(localStorage.getItem("countryside-orders")||"[]");setOrders(local);fetch(`${SUPABASE_URL}/rest/v1/orders?select=*&order=created_at.desc`,{headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`}}).then(r=>r.ok?r.json():[]).then(rows=>{const next=rows.map((o:any)=>({...o,createdAt:o.createdAt||o.created_at}));if(next.length){setOrders(next);localStorage.setItem("countryside-orders",JSON.stringify(next))}}).catch(()=>{})},[]);

@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 type Status="Pending"|"Received"|"Delivered"|"Cancelled";
 type Order={id:string;product:string;brand:string;price:number;name:string;phone:string;address:string;createdAt:string;status:Status|string};
 const ADMIN_PASSWORD="admin123";
-const SUPABASE_URL="https://ybfhzkbqifrvifziabiv.supabase.co";
-const SUPABASE_KEY="sb_publishable_6bE7qfr-TQQsEWxz6M02rQ_A-DLpZv_";
+const SUPABASE_URL=process.env.NEXT_PUBLIC_SUPABASE_URL||"";
+const SUPABASE_KEY=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY||"";
 
 export default function Admin(){
  const [password,setPassword]=useState(""); const [loggedIn,setLoggedIn]=useState(false); const [orders,setOrders]=useState<Order[]>([]); const [error,setError]=useState(""); const [tab,setTab]=useState<"active"|"cancelled">("active");
