@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Product = { id:number; name:string; brand:string; category:string; price:number; old?:number; image:string; badge?:string; stock:string };
 const products: Product[] = [
